@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1470046928300
+Build-Jdk: 1.8.0_60
+Built-By: Zoli
+Bundle-ManifestVersion: 2
+Bundle-Name: Zoli Backend
+Bundle-SymbolicName: camel-blueprint
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: notifications;uses:="org.apache.camel,org.slf4j,org.apac
+ he.camel.management.event,org.apache.camel.support";version="1.0.0.SNAP
+ SHOT",pni;uses:="org.apache.camel.builder,pni.beans,org.apache.camel,or
+ g.slf4j,org.apache.camel.model";version="1.0.0.SNAPSHOT",pni.beans;uses
+ :="org.apache.camel";version="1.0.0.SNAPSHOT"
+Import-Package: org.apache.activemq,org.apache.activemq.camel.component,
+ org.apache.camel;version="[2.15,3)",org.apache.camel.builder;version="[
+ 2.15,3)",org.apache.camel.management.event;version="[2.15,3)",org.apach
+ e.camel.model;version="[2.15,3)",org.apache.camel.support;version="[2.1
+ 5,3)",org.osgi.service.blueprint;version="[1.0.0,2.0.0)",org.slf4j;vers
+ ion="[1.7,2)"
+Tool: Bnd-1.50.0
