@@ -3,10 +3,10 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>zoli-req-rep</groupId>
-  <artifactId>zoli-request-reply</artifactId>
+  <groupId>zoli</groupId>
+  <artifactId>test-back</artifactId>
   <packaging>bundle</packaging>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>Zoli Backend</name>
 
