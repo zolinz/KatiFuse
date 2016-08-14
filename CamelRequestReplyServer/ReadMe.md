@@ -2,7 +2,7 @@
 
 This is just to start a bigger app
 
-* Create a Network Design
+* Create a bigger project
 
 
 
