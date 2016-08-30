@@ -1,6 +1,8 @@
-package com.mycompany.camel.blueprint;
+package provider;
 
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
+import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
 import org.junit.Test;
@@ -18,30 +20,43 @@ public class RouteTest extends CamelBlueprintTestSupport {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        RouteDefinition routeDef = context.getRouteDefinition("provider-route-back");
+        RouteDefinition routeDef = context.getRouteDefinition("zoli-platform");
         try {
             routeDef.adviceWith(context, new AdviceWithRouteBuilder() {
                 @Override
                 public void configure() {
-                    interceptSendToEndpoint("amq:queue:zoli.out").skipSendToOriginalEndpoint().to("mock:zoli.out");
-                }
-
-
-            });
-            routeDef.adviceWith(context, new AdviceWithRouteBuilder() {
-                @Override
-                public void configure() {
-                    replaceFromWith("mock:zoli.in");
+                    replaceFromWith("direct:zoli.in");
+                    interceptSendToEndpoint("amq:zoli.out").skipSendToOriginalEndpoint().to("mock:zoli.out");
                 }
             });
+
+
         } catch (Exception e) {
-            LOG.error("Error interceptSendTo", e);
+            LOG.error("Did not create routeDef", e);
         }
     }
+
+   /* protected CamelContext createCamelContext() throws Exception {
+        CamelContext camelContext = super.createCamelContext();
+
+        camelContext.addComponent("amq", activeMQComponent("vm://localhost?broker.persistent=false"));
+
+        return camelContext;
+    }
+*/
+
 
     @Test
     public void testRoute() throws Exception {
 
+
+        Exchange ex = new DefaultExchange(context);
+        //ex.getIn().setHeader("JMSReplyTo" , "zoli.out");
+        LOG.debug("got to test case");
+        ex.getIn().setBody("Zolika");
+
+
+        template.send("direct:zoli.in", ex);
 
 
 

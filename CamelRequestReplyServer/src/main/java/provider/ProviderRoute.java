@@ -27,21 +27,22 @@ public class ProviderRoute extends RouteBuilder {
                     //if jmsReplyTo exists then this bean has to set pattern to inonly otherwise 
                     // timeoutException after 20sec will occur on exchange
                     .bean(dummy, "processMSGBody")
-                    .to("amq:queue:" + errorQ)
+                    .to("amq:" + errorQ)
                 .endDoTry()
                 .doCatch(Exception.class)
                     .log(LoggingLevel.ERROR, logger, "exception when putting msg on error queue").end()
                 .end();
         
-        interceptSendToEndpoint("amq:queue:zoli.out")
-        .log(LoggingLevel.INFO,logger, "From Intercept");
+       // interceptSendToEndpoint("direct:zoli.out")
+        //.log(LoggingLevel.INFO,logger, "From Intercept");
 
-        from("amq:queue:zoli.input")
+        from("amq:zoli.input")
                 .routeId("zoli-platform")
                 .log(LoggingLevel.INFO, logger, "Received platform request to process ${headers} and body : ${body}")
                 .bean(sayHello,"processMSGBody")
                 .log(LoggingLevel.INFO, logger, "after msg processing")
-                .log(LoggingLevel.DEBUG, logger, "******************DEBUG");
+                .log(LoggingLevel.DEBUG, logger, "******************DEBUG")
+                .to("amq:zoli.out");
 
     }
 

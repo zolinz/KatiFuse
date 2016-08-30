@@ -13,6 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <dependency.activemq.version>5.11.0.redhat-621084</dependency.activemq.version>
   </properties>
 
   <repositories>
@@ -76,6 +77,32 @@
       <artifactId>camel-blueprint</artifactId>
       <version>2.15.1.redhat-620133</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-broker</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-client</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-pool</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jms</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+
 
     <!-- logging -->
     <dependency>
