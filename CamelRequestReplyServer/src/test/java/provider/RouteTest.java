@@ -64,6 +64,9 @@ public class RouteTest extends CamelBlueprintTestSupport {
         // we should then expect at least one message
         getMockEndpoint("mock:zoli.out").expectedMinimumMessageCount(1);
 
+        LOG.info(ex.getIn().toString());
+
+
         // assert expectations
         assertMockEndpointsSatisfied();
     }
