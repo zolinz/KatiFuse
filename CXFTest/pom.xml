@@ -6,7 +6,9 @@
 
     <groupId>zoli</groupId>
     <artifactId>zoli-cxf-test</artifactId>
+    <packaging>bundle</packaging>
     <version>1.0</version>
+    <name>Zoli CXF Test</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -200,7 +202,7 @@
                 </executions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>zoli-provider</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>zoli-cxf-provider</Bundle-SymbolicName>
                         <Private-Package>com.mycompany.camel.blueprint.*</Private-Package>
                         <Import-Package>*,!aQute.service.scripting</Import-Package>
                     </instructions>

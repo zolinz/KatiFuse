@@ -4,8 +4,8 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import provider.beans.SayHello;
 import provider.beans.Dummy;
+import provider.beans.SayHello;
 
 public class ProviderRoute extends RouteBuilder {
 
@@ -34,9 +34,14 @@ public class ProviderRoute extends RouteBuilder {
                 .end();
         
        // interceptSendToEndpoint("direct:zoli.out")
+
         //.log(LoggingLevel.INFO,logger, "From Intercept");
 
-        from("amq:zoli.input")
+
+        String [] ep = {"amq:zoli.input1", "amq:zoli.input2", "amq:zoli.input3"};
+
+
+        from(ep)
                 .routeId("zoli-platform")
                 .log(LoggingLevel.INFO, logger, "Received platform request to process ${headers} and body : ${body}")
                 .bean(sayHello,"processMSGBody")

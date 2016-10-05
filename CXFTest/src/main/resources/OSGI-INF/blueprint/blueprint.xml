@@ -16,13 +16,13 @@
     </bean>
 
 
-    <bean id="platformBackEnd" class="provider.ProviderRoute">
+    <bean id="platformCxf" class="services.ServiceRoute">
     </bean>
     
-    <bean id="myLoggingEventNotifier" class="notifications.MyLoggingEventNotifier"/>
+   <!-- <bean id="myLoggingEventNotifier" class="notifications.MyLoggingEventNotifier"/>-->
 
-    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="provider-route-context">
-        <routeBuilder ref="platformBackEnd" id="zoli-platform" />
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="provider-cxf-route-context">
+        <routeBuilder ref="platformCxf" id="zoli-cxf-platform" />
     </camelContext>
 
 </blueprint>

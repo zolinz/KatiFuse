@@ -3,6 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>zoli</groupId>
     <artifactId>zoli-wsdl-artifacts</artifactId>
+    <packaging>bundle</packaging>
     <version>1.0</version>
     <name>Zoli-wsdl-artifacts</name>
     <build>
@@ -31,7 +32,7 @@
                     <target>2.1</target>
                     <xadditionalHeaders>true</xadditionalHeaders>
                     <extension>true</extension>
-                    <sourceDestDir>src/main/generated</sourceDestDir>
+                    <sourceDestDir>src/main/java</sourceDestDir>
                     <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
                     <wsdlFiles>
                         <wsdlFile>report_incident.wsdl</wsdlFile>
@@ -59,6 +60,30 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.7</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>zoli-wsdl</Bundle-SymbolicName>
+                        <Private-Package>com.mycompany.camel.blueprint.*</Private-Package>
+                        <Import-Package>*,!aQute.service.scripting</Import-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
