@@ -1,5 +1,6 @@
 package services;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.cxf.CxfComponent;
 import org.apache.camel.component.cxf.CxfEndpoint;
@@ -8,6 +9,9 @@ import org.apache.camel.impl.CompositeRegistry;
 import org.apache.camel.impl.PropertyPlaceholderDelegateRegistry;
 import org.apache.camel.impl.SimpleRegistry;
 import org.apache.camel.spi.Registry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import zoliexceptions.MyException;
 
 /**
  * Created by Zoli on 31/08/2016.
@@ -15,10 +19,16 @@ import org.apache.camel.spi.Registry;
 public class ServiceRoute extends RouteBuilder {
     SoapProcessor sp = new SoapProcessor();
 
+    private static final Logger LOG = LoggerFactory.getLogger(ServiceRoute.class);
+
 
     @Override
-    public void configure() throws Exception {
+    public void configure()  {
 
+        onException(MyException.class).handled(true)
+                .log(LoggingLevel.ERROR, LOG, " ZOLIKA's exception logged").end();
+
+        onException(Exception.class).log(LoggingLevel.ERROR, LOG, " Generic crap thrown").end();
 
         //createing a cxf endopoint
         CxfComponent cxfComponent = new CxfComponent(getContext());

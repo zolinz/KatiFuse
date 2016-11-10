@@ -2,8 +2,10 @@ package services;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.example.reportincident.OutputReportIncident;
+import org.apache.camel.processor.FailOverLoadBalanceTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import zoliexceptions.MyException;
 
 /**
  * Created by Zoli on 31/08/2016.
@@ -11,12 +13,8 @@ import org.slf4j.LoggerFactory;
 public class SoapProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(SoapProcessor.class);
 
-    public SoapProcessor() {
-        super();
-    }
 
-    public void processMSGBody(Exchange ex){
-
+    public void processMSGBody(Exchange ex) throws MyException{
 
         LOG.info(ex.getIn().toString());
         OutputReportIncident or = new OutputReportIncident();
@@ -24,7 +22,7 @@ public class SoapProcessor {
         ex.getOut().setBody(or);
 
 
-        //throw new RuntimeException("ERROR from ZOLI");
+        throw new MyException("************************************Hello Zolika");
     }
 
 }
