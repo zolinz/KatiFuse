@@ -84,6 +84,8 @@ public class ServiceRoute extends RouteBuilder {
        //this is a new line 01
         //this is new line 02
      // ctx.
+        //new line 03
+
 
       //  MyCxfComponent myCxfComponent = new MyCxfComponent();
       //  myCxfComponent.setCamelContext(getContext());
