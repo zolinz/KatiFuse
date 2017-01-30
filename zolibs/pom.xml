@@ -5,10 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>zoli</groupId>
-    <artifactId>zoli-cxf-test</artifactId>
+    <artifactId>zolibs</artifactId>
     <packaging>bundle</packaging>
-    <version>1.0</version>
-    <name>Zoli CXF Test</name>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -66,6 +65,7 @@
         </pluginRepository>
     </pluginRepositories>
 
+
     <dependencies>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -73,19 +73,35 @@
             <version>2.15.1.redhat-620133</version>
         </dependency>
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-blueprint</artifactId>
             <version>2.15.1.redhat-620133</version>
         </dependency>
-
-
-
-
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+            <version>5.11.0.redhat-621084</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+            <version>5.11.0.redhat-621084</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-client</artifactId>
+            <version>5.11.0.redhat-621084</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+            <version>5.11.0.redhat-621084</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <version>2.15.1</version>
+        </dependency>
 
 
         <!-- logging -->
@@ -121,37 +137,13 @@
             <artifactId>camel-test-blueprint</artifactId>
             <version>2.15.1.redhat-620133</version>
         </dependency>
-
-        <dependency>
-            <groupId>zoli</groupId>
-            <artifactId>zoli-wsdl-artifacts</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-cxf</artifactId>
-            <version>2.15.1.redhat-621084</version>
-        <exclusions>
-            <!-- exclude asm 3.x as it clashes with Blueprint -->
-            <exclusion>
-                <groupId>asm</groupId>
-                <artifactId>asm</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
-
-
-
-
     </dependencies>
 
     <build>
         <defaultGoal>install</defaultGoal>
 
         <plugins>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
@@ -167,7 +159,7 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>-->
+            </plugin>
 
             <!-- to generate the MANIFEST-FILE of the bundle -->
             <plugin>
@@ -186,8 +178,9 @@
                 </executions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>zoli-cxf-provider</Bundle-SymbolicName>
-                        <Import-Package>*</Import-Package>
+                        <Bundle-SymbolicName>zoli-bs</Bundle-SymbolicName>
+                        <Private-Package>com.mycompany.camel.blueprint.*</Private-Package>
+                        <Import-Package>*,!aQute.service.scripting</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
@@ -201,90 +194,9 @@
                     <useBlueprint>true</useBlueprint>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
 
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>
-                    http://localhost:9000
-                </sonar.host.url>
-            </properties>
-            <!-- <activation>
-                 <activeByDefault>false</activeByDefault>
-             </activation>
-             <properties>
-                 <sonar.language>java</sonar.language>
-                 <sonar.analysis.mode>incremental</sonar.analysis.mode>
-                 <sonar.host.url>https://sonar.nbnco.net.au</sonar.host.url>
-                 <sonar.profile>ib2b</sonar.profile>
-                 <sonar.issuesReport.console.enable>true</sonar.issuesReport.console.enable>
-                 <sonar.issuesReport.html.enable>true</sonar.issuesReport.html.enable>
-                 <sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
-                 <sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
-                 <sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin>
-                 <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-             </properties>-->
-            <build>
-
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>cobertura-maven-plugin</artifactId>
-                        <version>2.7</version>
-                        <executions>
-                            <execution>
-                                <id>instrument</id>
-                                <phase>site</phase>
-                                <goals>
-                                    <goal>instrument</goal>
-                                    <goal>cobertura</goal>
-                                </goals>
-                                <configuration>
-                                    <encoding>UTF-8</encoding>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                           <!-- <aggregate>true</aggregate>
-                            <check>
-                                <branchRate>80</branchRate>
-                                <lineRate>80</lineRate>
-                                <haltOnFailure>false</haltOnFailure>
-                                <totalBranchRate>80</totalBranchRate>
-                                <totalLineRate>80</totalLineRate>
-                                <packageLineRate>80</packageLineRate>
-                                <packageBranchRate>80</packageBranchRate>
-                            </check>-->
-                            <formats>
-                                <format>xml</format>
-                                <format>html</format>
-                            </formats>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>sonar-maven-plugin</artifactId>
-                        <version>2.7.1</version>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 
 </project>

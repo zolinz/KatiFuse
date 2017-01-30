@@ -32,7 +32,7 @@
                     <target>2.1</target>
                     <xadditionalHeaders>true</xadditionalHeaders>
                     <extension>true</extension>
-                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <sourceDestDir>src/main/generated</sourceDestDir>
                     <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
                     <wsdlFiles>
                         <wsdlFile>report_incident.wsdl</wsdlFile>
@@ -43,7 +43,7 @@
                     </vmArgs>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
@@ -62,7 +62,7 @@
                 </executions>
             </plugin>
 
-
+-->
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>

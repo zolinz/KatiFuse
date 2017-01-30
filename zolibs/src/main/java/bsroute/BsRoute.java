@@ -1,18 +1,15 @@
-package provider;
+package bsroute;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import provider.beans.Dummy;
-import provider.beans.SayHello;
 
-public class ProviderRoute extends RouteBuilder {
+public class BsRoute extends RouteBuilder {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProviderRoute.class);
+    private static final Logger logger = LoggerFactory.getLogger(BsRoute.class);
     private static final String errorQ = "zoli.error";
-    private final SayHello sayHello = new SayHello();
-    private final Dummy dummy = new Dummy();
+
     
 
     @Override
@@ -26,7 +23,7 @@ public class ProviderRoute extends RouteBuilder {
                 .doTry()
                     //if jmsReplyTo exists then this bean has to set pattern to inonly otherwise 
                     // timeoutException after 20sec will occur on exchange
-                    .bean(dummy, "processMSGBody")
+
                     .to("amq:" + errorQ)
                 .endDoTry()
                 .doCatch(Exception.class)
@@ -38,17 +35,16 @@ public class ProviderRoute extends RouteBuilder {
         //.log(LoggingLevel.INFO,logger, "From Intercept");
 
 
-        //String [] ep = {"amq:zoli.input1", "amq:zoli.input2", "amq:zoli.input3"};
 
 
-        from("amq:platform.in?concurrentConsumers=1&maxConcurrentConsumers=50")
-                .routeId("zoli-platform")
-                .log(LoggingLevel.INFO, logger, "Received platform request to process ${headers} and body : ${body}")
-               // .bean(sayHello,"processMSGBody")
-                .log(LoggingLevel.INFO, logger, "after msg processing")
-                .log(LoggingLevel.DEBUG, logger, "******************DEBUG");
-                //.to("amq:zoli.out");
 
+        from("amq:bs.in")
+                .routeId("zoli-bs")
+                .log(LoggingLevel.INFO, logger, " BS Received  request to process ${headers} and body : ${body}")
+
+                //.setHeader("JMSReplyTo" , "amq:as.out")
+                .inOut("amq:as.in?replyTo=as.out&requestTimeout=25000&timeToLive=26000")
+                .log(LoggingLevel.INFO, logger, " BS Received  respons to process ${headers} and body : ${body}");
     }
 
 }

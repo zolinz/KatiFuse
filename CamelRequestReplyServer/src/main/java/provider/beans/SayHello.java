@@ -7,14 +7,16 @@ import org.slf4j.LoggerFactory;
 public class SayHello {
     public static final Logger LOG = LoggerFactory.getLogger(SayHello.class);
     
-    public void processMSGBody(Exchange ex){
+    public void processMSGBody(Exchange ex) throws Exception{
 
-        StringBuffer inBody = new StringBuffer();
+        Thread.sleep(21000);
+
+        /*StringBuffer inBody = new StringBuffer();
         inBody.append("Hello Bello ");
         inBody.append(ex.getIn().getBody());
         LOG.info("in process method");
         inBody.append(" from Camel");
-        ex.getIn().setBody(inBody.toString());
+        ex.getIn().setBody(inBody.toString());*/
         //throw new RuntimeException("ERROR from ZOLI");
     }
     

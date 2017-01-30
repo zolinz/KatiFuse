@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>zoli</groupId>
+    <artifactId>hello-ws</artifactId>
+    <packaging>war</packaging>
+    <version>1.0</version>
+
+
+    <dependencies>
+        <!-- jax-ws maven dependency -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.2.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.hk2</groupId>
+            <artifactId>hk2</artifactId>
+            <version>2.2.0-b15</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-core -->
+        <dependency>
+            <groupId>org.glassfish.hk2</groupId>
+            <artifactId>hk2-core</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+
+        <!-- servlet provided by tomcat -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+            </plugin>-->
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <target>2.1</target>
+                    <xadditionalHeaders>true</xadditionalHeaders>
+                    <extension>true</extension>
+                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+                    <wsdlFiles>
+                        <wsdlFile>Hello.wsdl</wsdlFile>
+                    </wsdlFiles>
+                    <bindingDirectory>src/main/resources/bindings</bindingDirectory>
+                    <vmArgs>
+                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                    </vmArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

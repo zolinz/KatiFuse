@@ -1,5 +1,5 @@
 
-package org.apache.camel.example.reportincident;
+package sayhello.zoli;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="greeting" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "code"
+    "greeting"
 })
-@XmlRootElement(name = "outputReportIncident")
-public class OutputReportIncident {
+@XmlRootElement(name = "outputSayHello")
+public class OutputSayHello {
 
     @XmlElement(required = true)
-    protected String code;
+    protected String greeting;
 
     /**
-     * Gets the value of the code property.
+     * Gets the value of the greeting property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCode() {
-        return code;
+    public String getGreeting() {
+        return greeting;
     }
 
     /**
-     * Sets the value of the code property.
+     * Sets the value of the greeting property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCode(String value) {
-        this.code = value;
+    public void setGreeting(String value) {
+        this.greeting = value;
     }
 
 }
