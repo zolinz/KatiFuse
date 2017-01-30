@@ -82,6 +82,7 @@ public class ServiceRoute extends RouteBuilder {
 
        BundleContext ctx = FrameworkUtil.getBundle(getClass()).getBundleContext();
        //this is a new line 01
+        //this is new line 02
      // ctx.
 
       //  MyCxfComponent myCxfComponent = new MyCxfComponent();
