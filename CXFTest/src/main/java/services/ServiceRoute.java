@@ -82,6 +82,8 @@ public class ServiceRoute extends RouteBuilder {
 
        BundleContext ctx = FrameworkUtil.getBundle(getClass()).getBundleContext();
      // ctx.
+        //new line 03
+
 
       //  MyCxfComponent myCxfComponent = new MyCxfComponent();
       //  myCxfComponent.setCamelContext(getContext());
