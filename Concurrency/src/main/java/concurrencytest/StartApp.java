@@ -1,7 +1,5 @@
 package concurrencytest;
 
-import java.util.Date;
-
 /**
  * Created by Zoli on 16/09/2016.
  */
@@ -15,11 +13,11 @@ public class StartApp {
 
 
         one.start();
-        //Thread.sleep(2000);
-        //one.interrupt();
+        Thread.sleep(2000);
+        one.interrupt();
         //Thread.sleep(4000);
         two.start();
 
-        System.out.println("finish" + new Date());
+        //System.out.println("finish" + new Date());
     }
 }

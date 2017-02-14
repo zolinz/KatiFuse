@@ -4,7 +4,6 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.component.cxf.CxfComponent;
 import org.apache.camel.component.cxf.CxfEndpoint;
 import org.apache.camel.example.reportincident.ReportIncidentEndpoint;
-import services.validation.CxfSchemaValidationOffValidationEventHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +24,8 @@ public class MyCxfComponent extends CxfComponent{
         //serviceEndpoint.setBeanId("reportEndpoint");
         serviceEndpoint.setServiceClass(ReportIncidentEndpoint.class);
         Map<String, Object> properties = serviceEndpoint.getProperties() != null ? serviceEndpoint.getProperties() : new HashMap<String, Object>();
-        properties.put("schema-validation-enabled", false);
-        properties.put("jaxb-validation-event-handler", CxfSchemaValidationOffValidationEventHandler.INSTANCE);
+        properties.put("schema-validation-enabled", true);
+        //properties.put("jaxb-validation-event-handler", CxfSchemaValidationOffValidationEventHandler.INSTANCE);
        serviceEndpoint.setProperties(properties);
         serviceEndpoint.setLoggingFeatureEnabled(true);
         return serviceEndpoint;

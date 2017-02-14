@@ -17,7 +17,7 @@ public class HelloRunnable implements Runnable {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            System.out.println("got interrupted" );
+            System.out.println(msg + "got interrupted"  );
         }
         System.out.println(msg + new Date());
     }
