@@ -26,5 +26,6 @@ public class InfinispanRemote {
         cacheManager.stop();
         //commit 01 from master
         //commit 02 from master
+        //commit 03 from master
     }
 }
