@@ -24,5 +24,6 @@ public class InfinispanRemote {
         System.out.printf("key = %s\n", cache.get("key"));
         // Stop the cache manager and release all resources
         cacheManager.stop();
+        //commit 01 from master 
     }
 }
