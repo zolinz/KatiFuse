@@ -10,6 +10,7 @@ import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 public class InfinispanRemote {
 
     public static void main(String[] args) {
+        // 01 testE branch
         // Create a configuration for a locally-running server
         ConfigurationBuilder builder = new ConfigurationBuilder();
         builder.addServers("192.168.178.156:11222;192.168.178.150:11222");
