@@ -28,7 +28,7 @@
     <bean id="asRoute" class="asroute.AsRoute">
     </bean>
     
-    <bean id="myLoggingEventNotifier" class="notifications.MyLoggingEventNotifier"/>
+    <!--<bean id="myLoggingEventNotifier" class="notifications.MyLoggingEventNotifier"/>-->
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="as-route-context">
         <routeBuilder ref="asRoute" id="zoli-as" />
