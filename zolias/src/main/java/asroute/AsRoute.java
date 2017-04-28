@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class AsRoute extends RouteBuilder {
 
     private static final Logger logger = LoggerFactory.getLogger(AsRoute.class);
-    private static final String errorQ = "zoli.error";
+    private static final String errorQ = "AS.ERROR";
 
     
 
@@ -40,19 +40,32 @@ public class AsRoute extends RouteBuilder {
 
 
 
-        from("amq:as.in?replyTo=as.out")
+        from("amq:AS.IN?concurrentConsumers=1&maxConcurrentConsumers=50")
                 .routeId("zoli-as")
-                .log(LoggingLevel.INFO, logger, " AS Received  request to process ${headers} and body : ${body}")
-                .log(LoggingLevel.DEBUG, logger, "******************DEBUG")
+                .log(LoggingLevel.INFO, logger, " AS Received  request to process ${headers}") //and body : ${body}")
+               /* .process(new Processor() {
+                    @Override
+                    public void process(Exchange exchange) throws Exception {
+                        logger.info("got to processor");
+                    }
+                })*/
+                // .dynamicRouter(header("myHeader"))
+               // .recipientList(header("myHeader"))
+               // .to("direct:internal")
+                //.inOut("amq:PLATFORM.IN?replyTo=PLATFORM.OUT")
+                .log(LoggingLevel.INFO, logger, " AS Got the response back ${headers}");
+                //.to("amq:AS.OUT");
+
+
+        from("direct:internal")
+                .routeId("direct-internal")
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
-                        System.out.println("got to AS");
+                        logger.info("got to processor");
                     }
                 })
-                //.setHeader("JMSReplyTo" , "amq:as.out")
-                .inOut("amq:platform.in?replyTo=platform.out&requestTimeout=22000&timeToLive=23000")
-                .log(LoggingLevel.INFO, logger, " AS Got the response back ${headers} and body : ${body}");
+                .inOut("amq:PLATFORM.IN?replyTo=PLATFORM.OUT");
     }
 
 }

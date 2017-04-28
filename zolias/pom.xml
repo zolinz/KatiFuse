@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dependency.activemq.version>5.11.0.redhat-621084</dependency.activemq.version>
+        <dependency.ibm.wmq.version>7.5.0.1</dependency.ibm.wmq.version>
     </properties>
 
     <repositories>
@@ -102,6 +103,86 @@
             <version>2.15.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jetty</artifactId>
+            <version>2.15.1</version>
+        </dependency>
+
+        <!-- WMQ -->
+        <dependency>
+            <groupId>com.ibm.mq.osgi</groupId>
+            <artifactId>osgi-directip</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.mq.osgi.directip_7.5.0.1.jar</systemPath>
+        </dependency>
+        <!--<dependency>
+          <groupId>com.ibm.mq.osgi</groupId>
+          <artifactId>osgi-java</artifactId>
+          <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.mq.osgi.java_7.5.0.1.jar</systemPath>
+        </dependency>-->
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-commonservices-j2se</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.commonservices.j2se_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-jms</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.jms_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-jms-prereq</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.jms.prereq_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-nls</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.nls_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-wmq</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-wmq-nls</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq.nls_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-wmq-prereq</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq.prereq_7.5.0.1.jar</systemPath>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm/com.ibm.mqjms -->
+        <!-- <dependency>
+           <groupId>com.ibm</groupId>
+           <artifactId>com.ibm.mqjms</artifactId>
+           <version>${dependency.ibm.wmq.version}</version>
+           <scope>system</scope>
+           <systemPath>C:/temp/ibm/com.ibm.mqjms.jar</systemPath>
+         </dependency>-->
+
+
 
         <!-- logging -->
         <dependency>
@@ -136,8 +217,83 @@
             <artifactId>camel-test-blueprint</artifactId>
             <version>2.15.1.redhat-620133</version>
         </dependency>
-    </dependencies>
 
+
+        <!-- WMQ -->
+        <dependency>
+            <groupId>com.ibm.mq.osgi</groupId>
+            <artifactId>osgi-directip</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.mq.osgi.directip_7.5.0.1.jar</systemPath>
+        </dependency>
+        <!--<dependency>
+          <groupId>com.ibm.mq.osgi</groupId>
+          <artifactId>osgi-java</artifactId>
+          <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.mq.osgi.java_7.5.0.1.jar</systemPath>
+        </dependency>-->
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-commonservices-j2se</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.commonservices.j2se_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-jms</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.jms_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-jms-prereq</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.jms.prereq_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-nls</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.nls_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-wmq</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-wmq-nls</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq.nls_7.5.0.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.msg.client.osgi</groupId>
+            <artifactId>osgi-wmq-prereq</artifactId>
+            <version>${dependency.ibm.wmq.version}</version>
+            <scope>system</scope>
+            <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq.prereq_7.5.0.1.jar</systemPath>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm/com.ibm.mqjms -->
+        <!-- <dependency>
+           <groupId>com.ibm</groupId>
+           <artifactId>com.ibm.mqjms</artifactId>
+           <version>${dependency.ibm.wmq.version}</version>
+           <scope>system</scope>
+           <systemPath>C:/temp/ibm/com.ibm.mqjms.jar</systemPath>
+         </dependency>-->
+
+
+    </dependencies>
     <build>
         <defaultGoal>install</defaultGoal>
 

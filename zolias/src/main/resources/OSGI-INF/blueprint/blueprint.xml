@@ -15,20 +15,51 @@
         </property>
     </bean>
 
-   <!-- <bean id="amq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+
+
+
+<!--
+    <bean id="wmq" class="org.apache.camel.component.jms.JmsComponent">
+        <property name="transacted" value="true" />
         <property name="connectionFactory">
-            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
-                <property name="brokerURL"
-                          value="vm://amq?create=false&amp;waitForStart=10000" />
-                <property name="userName" value="admin" />
-                <property name="password" value="admin" />
+            <bean class="org.springframework.jms.connection.CachingConnectionFactory">
+                <property name="targetConnectionFactory" ref="wmqJmsCF"/>
+                <property name="sessionCacheSize" value="200" />
+                <property name="cacheConsumers" value="false" />
+                <property name="cacheProducers" value="false" />
             </bean>
         </property>
     </bean>-->
+
+  <!--  <bean  id="wmqJmsCF" class="com.ibm.mq.jms.MQConnectionFactory">
+        &lt;!&ndash; WMQConstants.WMQ_CM_CLIENT &ndash;&gt;
+        <property name="transportType" value="1" />
+        &lt;!&ndash; Integer.MAX_VALUE &ndash;&gt;
+        <property name="clientReconnectTimeout" value="2147483647" />
+        &lt;!&ndash; WMQConstants.WMQ_CLIENT_RECONNECT &ndash;&gt;
+        <property name="clientReconnectOptions" value="16777216" />
+        <property name="connectionNameList" value="localhost(1416)" />
+        <property name="queueManager" value="ZOLI4" />
+        <property name="channel" value="WMQ_TEST" />
+        &lt;!&ndash; Default 5000 &ndash;&gt;
+        <property name="pollingInterval" value="1" />
+    </bean>-->
+
+
+    <!-- <bean id="amq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+         <property name="connectionFactory">
+             <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                 <property name="brokerURL"
+                           value="vm://amq?create=false&amp;waitForStart=10000" />
+                 <property name="userName" value="admin" />
+                 <property name="password" value="admin" />
+             </bean>
+         </property>
+     </bean>-->
     <bean id="asRoute" class="asroute.AsRoute">
     </bean>
     
-    <!--<bean id="myLoggingEventNotifier" class="notifications.MyLoggingEventNotifier"/>-->
+    <bean id="myLoggingEventNotifier" class="notification.AsLoggingEventNotifier"/>
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="as-route-context">
         <routeBuilder ref="asRoute" id="zoli-as" />

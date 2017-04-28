@@ -93,7 +93,7 @@ public class ServiceRoute extends RouteBuilder {
 
        // getContext().addComponent("cxfEndpoint", myCxfComponent );
 
-        from("cxfEndpoint:hello")
+        from("cxfEndpoint:fuckinghell")
           .bean(sp, "processMSGBody");
 
 
