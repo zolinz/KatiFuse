@@ -881,7 +881,7 @@
             </Destinations>
             <Destinations>
                 <DestName>CIS-queryAddressSearch</DestName>
-                <DestURL>https://cis-queryAddress-${environment}.nbndc.local:443/async</DestURL>
+                <DestURL>https://cis-queryAddress-${environment}.slb.nbndc.local:443/async</DestURL>
                 <EnabledDocType>
                     <EnableXML>on</EnableXML>
                     <EnableX12>off</EnableX12>
@@ -941,7 +941,7 @@
             </Destinations>
             <Destinations>
                 <DestName>CIS-requestSingleSiteQualification</DestName>
-                <DestURL>https://cis-testSiteQualification-${environment}.nbndc.local:443/async</DestURL>
+                <DestURL>https://cis-testSiteQualification-${environment}.slb.nbndc.local:443/async</DestURL>
                 <EnabledDocType>
                     <EnableXML>on</EnableXML>
                     <EnableX12>off</EnableX12>

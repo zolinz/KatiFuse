@@ -82,6 +82,16 @@
             <artifactId>camel-blueprint</artifactId>
             <version>2.15.1.redhat-620133</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jetty</artifactId>
+            <version>2.15.1.redhat-620133</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
+            <version>2.15.1.redhat-620133</version>
+        </dependency>
 
 
 
