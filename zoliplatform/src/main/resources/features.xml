@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="ib2b-integration-1.0.0-SNAPSHOT" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
+
+  <!--  &lt;!&ndash; static features &ndash;&gt;
+    <feature name="ibm-wmq" version="7.5.0.1">
+        <bundle>file:C:/temp/ibm/com.ibm.mq.osgi.directip_7.5.0.1.jar</bundle>
+        &lt;!&ndash; <bundle>file:com.ibm.mq.osgi/osgi-java/7.5.0.1</bundle> &ndash;&gt;
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.commonservices.j2se_7.5.0.1.jar</bundle>
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.jms_7.5.0.1.jar</bundle>
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.jms.prereq_7.5.0.1.jar</bundle>
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.wmq_7.5.0.1.jar</bundle>
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.wmq.nls_7.5.0.1.jar</bundle>
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.nls_7.5.0.1.jar</bundle>
+        <bundle>file:C:/temp/ibm/com.ibm.msg.client.osgi.wmq.prereq_7.5.0.1.jar</bundle>
+    </feature>
+-->
+
+
+
+
+
+
+</features>

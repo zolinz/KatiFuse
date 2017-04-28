@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>zoli</groupId>
+  <artifactId>zoli-platform</artifactId>
+  <packaging>bundle</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>zoliplatform</name>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <dependency.activemq.version>5.11.0.redhat-621084</dependency.activemq.version>
+   <!-- <dependency.ibm.wmq.version>7.5.0.1</dependency.ibm.wmq.version>-->
+  </properties>
+
+  <repositories>
+   <!-- <repository>
+      <id>zoli.local.wmq.jars</id>
+      <name>Zoli Local WMQ jars</name>
+      <url>https://mvnrepository.com/artifact/com.ibm/com.ibm.mqjms</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>-->
+    <repository>
+      <id>release.fusesource.org</id>
+      <name>FuseSource Release Repository</name>
+      <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+     <id>ea.fusesource.org</id>
+     <name>FuseSource Community Early Access Release Repository</name>
+     <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+     <snapshots>
+      <enabled>false</enabled>
+     </snapshots>
+     <releases>
+      <enabled>true</enabled>
+     </releases>
+    </repository>
+
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>release.fusesource.org</id>
+      <name>FuseSource Release Repository</name>
+      <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+    <pluginRepository>
+     <id>ea.fusesource.org</id>
+     <name>FuseSource Community Early Access Release Repository</name>
+     <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+     <snapshots>
+      <enabled>false</enabled>
+     </snapshots>
+     <releases>
+      <enabled>true</enabled>
+     </releases>
+    </pluginRepository>      
+  </pluginRepositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>2.15.1.redhat-620133</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-blueprint</artifactId>
+      <version>2.15.1.redhat-620133</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-broker</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-client</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-pool</artifactId>
+      <version>5.11.0.redhat-621084</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jms</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jetty</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+
+
+
+    <!-- logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>1.7.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.5</version>
+    </dependency>
+
+    <!-- Testing & Camel Plugin -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-test-blueprint</artifactId>
+      <version>2.15.1.redhat-620133</version>
+    </dependency>
+
+
+    <!-- WMQ -->
+    <!--<dependency>
+      <groupId>com.ibm.mq.osgi</groupId>
+      <artifactId>osgi-directip</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+      <scope>system</scope>
+      <systemPath>C:/temp/ibm/com.ibm.mq.osgi.directip_7.5.0.1.jar</systemPath>
+    </dependency>-->
+    <!--<dependency>
+      <groupId>com.ibm.mq.osgi</groupId>
+      <artifactId>osgi-java</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.mq.osgi.java_7.5.0.1.jar</systemPath>
+    </dependency>-->
+   <!-- <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-commonservices-j2se</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.commonservices.j2se_7.5.0.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-jms</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.jms_7.5.0.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-jms-prereq</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.jms.prereq_7.5.0.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-nls</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.nls_7.5.0.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-wmq</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq_7.5.0.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-wmq-nls</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq.nls_7.5.0.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.msg.client.osgi</groupId>
+      <artifactId>osgi-wmq-prereq</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+        <scope>system</scope>
+        <systemPath>C:/temp/ibm/com.ibm.msg.client.osgi.wmq.prereq_7.5.0.1.jar</systemPath>
+    </dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.ibm/com.ibm.mqjms -->
+   <!-- <dependency>
+      <groupId>com.ibm</groupId>
+      <artifactId>com.ibm.mqjms</artifactId>
+      <version>${dependency.ibm.wmq.version}</version>
+      <scope>system</scope>
+      <systemPath>C:/temp/ibm/com.ibm.mqjms.jar</systemPath>
+    </dependency>-->
+
+
+  </dependencies>
+
+  <build>
+    <defaultGoal>install</defaultGoal>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- to generate the MANIFEST-FILE of the bundle -->
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.3.7</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+           <id>bundle-manifest</id>
+           <phase>process-classes</phase>
+           <goals>
+               <goal>manifest</goal>
+           </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>zoli-provider</Bundle-SymbolicName>
+            <Private-Package>com.mycompany.camel.blueprint.*</Private-Package>
+            <Import-Package>*,!aQute.service.scripting</Import-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+
+       <!-- to run the example using mvn camel:run -->
+      <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-maven-plugin</artifactId>
+        <version>2.15.1.redhat-620133</version>
+        <configuration>
+          <useBlueprint>true</useBlueprint>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

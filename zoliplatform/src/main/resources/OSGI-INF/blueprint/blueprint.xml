@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+
+    <bean id="amq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL"
+                    value="vm://amq?create=false&amp;waitForStart=10000" />
+                <property name="userName" value="admin" />
+                <property name="password" value="admin" />
+            </bean>
+        </property>
+    </bean>
+
+   <!-- <bean id="wmq" class="org.apache.camel.component.jms.JmsComponent">
+       &lt;!&ndash; <property name="transacted" value="false" />&ndash;&gt;
+        <property name="maxConcurrentConsumers" value="1"/>
+        <property name="cacheLevelName" value="CACHE_CONNECTION"/>
+        <property name="connectionFactory">
+            <bean class="org.springframework.jms.connection.CachingConnectionFactory">
+                <property name="targetConnectionFactory" ref="wmqJmsCF"/>
+                <property name="sessionCacheSize" value="200" />
+                <property name="cacheConsumers" value="false" />
+                <property name="cacheProducers" value="false" />
+            </bean>
+        </property>
+    </bean>
+-->
+
+   <!-- <bean id="wmq" class="org.apache.camel.component.jms.JmsComponent">
+        &lt;!&ndash; <property name="transacted" value="true" />&ndash;&gt;
+        <property name="maxConcurrentConsumers" value="1"/>
+        <property name="cacheLevelName" value="CACHE_CONNECTION"/>
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.jms.pool.PooledConnectionFactory" init-method="start">
+                <property name="connectionFactory" ref="wmqJmsCF"/>
+                <property name="createConnectionOnStartup" value="false"/>
+                <property name="maxConnections" value="20"/>
+                <property name="maximumActiveSessionPerConnection" value="10"/>
+                <property name="blockIfSessionPoolIsFull" value="false"/>
+            </bean>
+        </property>
+    </bean>-->
+
+
+
+
+
+
+  <!--  <bean  id="wmqJmsCF" class="com.ibm.mq.jms.MQConnectionFactory">
+        &lt;!&ndash; WMQConstants.WMQ_CM_CLIENT &ndash;&gt;
+        <property name="transportType" value="1" />
+        &lt;!&ndash; Integer.MAX_VALUE &ndash;&gt;
+        <property name="clientReconnectTimeout" value="2147483647" />
+        &lt;!&ndash; WMQConstants.WMQ_CLIENT_RECONNECT &ndash;&gt;
+        <property name="clientReconnectOptions" value="16777216" />
+        <property name="connectionNameList" value="localhost(1416)" />
+        <property name="queueManager" value="ZOLI4" />
+        <property name="channel" value="WMQ_TEST" />
+        &lt;!&ndash; Default 5000 &ndash;&gt;
+        <property name="pollingInterval" value="1" />
+    </bean>
+
+-->
+
+
+    <bean id="platformBackEnd" class="provider.ProviderRoute">
+    </bean>
+    
+    <!--<bean id="myLoggingEventNotifier" class="notifications.MyLoggingEventNotifier"/>-->
+
+    <!-- useMDCLogging="true"-->
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="provider-route-context" >
+        <routeBuilder ref="platformBackEnd" id="zoli-platform" />
+    </camelContext>
+
+</blueprint>
