@@ -93,8 +93,8 @@ public class ServiceRoute extends RouteBuilder {
 
        // getContext().addComponent("cxfEndpoint", myCxfComponent );
 
-        from("cxfEndpoint:fuckinghell")
-          .bean(sp, "processMSGBody");
+        from("jett:http://loclahost:8888").to("cxfEndpoint:fuckinghell");
+          //.bean(sp, "processMSGBody");
 
 
     }
