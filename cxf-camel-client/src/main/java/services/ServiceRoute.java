@@ -19,7 +19,7 @@ import zoliexceptions.MyException;
  * Created by Zoli on 31/08/2016.
  */
 public class ServiceRoute extends RouteBuilder {
-    SoapProcessor sp = new SoapProcessor();
+    SoapProcessorClient sp = new SoapProcessorClient();
 
     private static final Logger LOG = LoggerFactory.getLogger(ServiceRoute.class);
 
@@ -93,8 +93,13 @@ public class ServiceRoute extends RouteBuilder {
 
        // getContext().addComponent("cxfEndpoint", myCxfComponent );
 
-        from("jett:http://loclahost:8888").to("cxfEndpoint:fuckinghell");
-          //.bean(sp, "processMSGBody");
+        from("jetty:http://localhost:8888")
+                .log(LoggingLevel.INFO, "Got to cxf cient")
+                .bean(sp, "processMSGBody")
+                .to("cxfEndpoint:fuckinghell")
+                .log(LoggingLevel.INFO, "Got response from provider")
+                .bean(sp, "processResponse");
+          ;
 
 
     }

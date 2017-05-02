@@ -196,7 +196,7 @@
                 </executions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>zoli-cxf-provider</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>cxf-camel-provider</Bundle-SymbolicName>
                         <Import-Package>*</Import-Package>
                     </instructions>
                 </configuration>

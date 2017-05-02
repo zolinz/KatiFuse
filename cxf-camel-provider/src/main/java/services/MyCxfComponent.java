@@ -7,7 +7,7 @@ import org.apache.camel.component.cxf.transport.CamelTransportFactory;
 import org.apache.camel.example.reportincident.ReportIncidentEndpoint;
 import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
-import org.apache.cxf.binding.soap.Soap11;
+import org.apache.cxf.binding.soap.Soap12;
 import org.apache.cxf.binding.soap.SoapBindingConfiguration;
 import org.apache.cxf.transport.ConduitInitiatorManager;
 import org.apache.cxf.transport.DestinationFactoryManager;
@@ -51,7 +51,7 @@ public class MyCxfComponent extends CxfComponent{
         dfm.registerDestinationFactory(CamelTransportFactory.TRANSPORT_ID, camelTransportFactory);
         serviceEndpoint.setBus(bus);
         SoapBindingConfiguration sbf = new SoapBindingConfiguration();
-        sbf.setVersion(Soap11.getInstance());
+        sbf.setVersion(Soap12.getInstance());
         serviceEndpoint.setBindingConfig(sbf);
         //serviceEndpoint.setAddress("camel://amq:queue:zoli.in?replyTo=zoli.out");
 

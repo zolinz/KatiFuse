@@ -94,7 +94,9 @@ public class ServiceRoute extends RouteBuilder {
        // getContext().addComponent("cxfEndpoint", myCxfComponent );
 
         from("cxfEndpoint:fuckinghell")
-          .bean(sp, "processMSGBody");
+           .log(LoggingLevel.INFO, "got to provider")
+          .bean(sp, "processMSGBody")
+                .log(LoggingLevel.INFO, "providers response");
 
 
     }
