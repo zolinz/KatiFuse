@@ -9,10 +9,15 @@
     <bean id="amq" class="org.apache.activemq.camel.component.ActiveMQComponent">
         <property name="connectionFactory">
             <bean class="org.apache.activemq.ActiveMQConnectionFactory">
-                <property name="brokerURL"
+               <!-- <property name="brokerURL"
                     value="vm://amq?create=false&amp;waitForStart=10000" />
                 <property name="userName" value="admin" />
-                <property name="password" value="admin" />
+                <property name="password" value="zoli" />-->
+                <property name="brokerURL"
+                          value="tcp://svicf0000060np.nbndc.local:61616" />
+                <property name="userName" value="admin" />
+                <property name="password" value="zoli" />
+
             </bean>
         </property>
     </bean>

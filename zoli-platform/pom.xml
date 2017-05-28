@@ -13,7 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <dependency.activemq.version>5.11.0.redhat-621084</dependency.activemq.version>
+    <dependency.activemq.version>5.11.0.redhat-630187</dependency.activemq.version>
    <!-- <dependency.ibm.wmq.version>7.5.0.1</dependency.ibm.wmq.version>-->
   </properties>
 
@@ -29,6 +29,18 @@
         <enabled>true</enabled>
       </releases>
     </repository>-->
+
+          <repository>
+              <id>jboss-ga-repository</id>
+              <url>http://maven.repository.redhat.com/techpreview/all</url>
+              <releases>
+                  <enabled>true</enabled>
+              </releases>
+              <snapshots>
+                  <enabled>false</enabled>
+              </snapshots>
+          </repository>
+
     <repository>
       <id>release.fusesource.org</id>
       <name>FuseSource Release Repository</name>
@@ -90,26 +102,31 @@
       <artifactId>camel-blueprint</artifactId>
       <version>2.15.1.redhat-620133</version>
     </dependency>
+
+
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-broker</artifactId>
-      <version>5.11.0.redhat-621084</version>
+      <version>${dependency.activemq.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-camel</artifactId>
-      <version>5.11.0.redhat-621084</version>
+      <version>${dependency.activemq.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-client</artifactId>
-      <version>5.11.0.redhat-621084</version>
+      <version>${dependency.activemq.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-pool</artifactId>
-      <version>5.11.0.redhat-621084</version>
+      <version>${dependency.activemq.version}</version>
     </dependency>
+
+
+
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jms</artifactId>

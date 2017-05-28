@@ -42,7 +42,7 @@ public class ProviderRoute extends RouteBuilder {
         //String [] ep = {"amq:zoli.input1", "amq:zoli.input2", "amq:zoli.input3"};
 
 
-        from("amq:PLATFORM.IN?concurrentConsumers=1&maxConcurrentConsumers=50")
+        from("amq:ZOLI.PLATFORM.IN?concurrentConsumers=1&maxConcurrentConsumers=50")
                 .routeId("zoli-platform")
                 .log(LoggingLevel.INFO, logger, "Received platform request to process") // ${headers}" and body : ${body}")
                .bean(sayHello,"processMSGBody")
@@ -51,7 +51,7 @@ public class ProviderRoute extends RouteBuilder {
                 .to("jetty:http://localhost:7777/test")
                 .log(LoggingLevel.INFO, logger, "after msg processing ${headers} ")
                 //.log(LoggingLevel.DEBUG, logger, "******************DEBUG");
-                .to("amq:PLATFORM.OUT");
+                .to("amq:ZOLI.PLATFORM.OUT");
 
     }
 
